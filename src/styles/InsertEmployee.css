@@ -1,0 +1,24 @@
+#div1{
+	display:block;
+}
+#div2{
+	display:none;
+}
+
+
+.next-button{
+	background:#007bff;
+	border-radius:2px;
+	border:0px;
+	color:white;
+	padding:10px;
+	width:20%;
+	float:right;
+	text-align:center;
+	cursor:pointer;
+}
+
+.next-button:hover{
+opacity:0.8;
+
+}

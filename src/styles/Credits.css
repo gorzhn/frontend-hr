@@ -1,0 +1,12 @@
+
+.container-students{
+	
+	display:grid !important;
+	  grid-template-columns: repeat(auto-fill, 600px) !important;
+}
+.card-grid {
+
+	margin:19px 0 19px 0 ;
+	width:210px;
+	
+}

@@ -1,0 +1,84 @@
+.terminate-button{
+	border-radius:.125em;
+	background-color:#ff3547;
+	cursor:pointer;
+	box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+	padding:0.84em 2.14em;
+	font-size:0.81em;
+	border:0;
+	text-transform: uppercase;
+	color:white !important;
+	font-family:"Arial" !important;
+	margin-top:-9px;
+	height:35px;
+}
+
+th {
+	text-align:center;
+}
+
+.details-button{
+	border-radius:.125em;
+	background-color:#007bff;
+	cursor:pointer;
+	box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+	padding:0.84em 2.14em;
+	font-size:0.81em;
+	border:0;
+	text-transform: uppercase;
+	color:white !important;
+	font-family:"Arial" !important;
+}
+
+
+.p-5{
+	padding:0 3em 3em 3em !important;
+	background:#a8d1e7 !important;
+}
+.card{
+	padding:10px 0 10px 10px !important;
+
+}
+
+.absolute-card {
+	position:absolute !important
+}
+
+.terminate-button:hover{
+	opacity: 0.8;
+	color:white;
+}
+
+.employee-table{
+	overflow-x: auto !important;
+	display:table;
+	min-width:10px;
+
+}
+
+.employee-table thead {
+	
+}
+
+.employees-title{
+	margin:0.73em !important
+}
+.employee-table th {
+	cursor:pointer;
+	background-color:#f4f4f4;
+	border-right: 1px solid lightgray;
+
+}
+
+
+
+.employee-table th:hover {
+	opacity:0.7;
+}
+
+.table thead th {
+vertical-align:middle !important;
+padding:0.5em;
+}	
+
+ 

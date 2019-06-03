@@ -1,0 +1,58 @@
+.search-button {
+	margin:auto;
+	margin-bottom:0;
+	width:20%;
+
+
+	background:#007bff;
+	border-radius:2px;
+	border:0px;
+	color:white;
+	padding:10px;
+	width:20%;
+	text-align:center;
+	cursor:pointer;
+	vertical-align: bottom;
+}
+
+
+
+.container-students{
+	margin-left:5;
+	display:grid !important;
+	  grid-template-columns: repeat(auto-fit, 9000px) !important;
+	  grid-column-gap: 200px;
+
+}
+.card-grid11 {
+
+	margin:19px 0 19px 0 ;
+	width:900px;
+	
+}
+#div3 {
+	display:none;
+}
+#div4{
+	display:none;
+}
+
+.back-button{
+	float:left;
+
+	margin-bottom:0;
+	width:20%;
+
+
+	background:#007bff;
+	border-radius:2px;
+	border:0px;
+	color:white;
+	padding:10px;
+	width:20%;
+	text-align:center;
+	cursor:pointer;
+	vertical-align: bottom;
+
+
+}

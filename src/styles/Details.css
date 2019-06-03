@@ -1,0 +1,46 @@
+.basic-info-form {
+  padding:5px 20px 5px 20px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:0px;
+}
+.personal-info-form {
+  padding:5px 20px 5px 20px;
+  display:grid;
+  grid-template-columns: 1fr;
+}
+html,  .p-5  {
+  background:white !important;
+}
+.md-form{
+  margin-left:10px;
+}
+
+.submit-button{
+  float:right;
+}
+
+
+.container {
+  display:flex;
+  flex-wrap: wrap;
+  width:100%;
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+
+}
+
+.grid-nav {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+}
+.theDamnRow{
+  position:relative;
+  top:-2.3em;
+  }
+
+.search-input {
+  width:100% !important ;
+}
+
+
