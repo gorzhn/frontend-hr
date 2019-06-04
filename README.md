@@ -1,19 +1,15 @@
-# mdbreact-admin-template-free
+# Human Resources Dashboard ( проект по предметот Веб Програмирање )
 
-> MDB - React Admin Dashboard Free
+> Blackbox
 
-## Build Setup
+## Development run
 
 ``` bash
-# install dependencies
-yarn
+# This command opens localhost:3000 automatically 
+yarn start 
 
-# serve with hot reload at localhost:8080
-yarn start
+Frontend and Backend made by Blackbox using React and .NET Core 2.2
 
-# build for production with minification
-yarn build
+```
 
-# build for production and view the bundle analyzer report
-yarn build --report
-```	
+### Libraries used ...
