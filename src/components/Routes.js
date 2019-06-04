@@ -11,23 +11,27 @@ import RemoveEmployee from './pages/RemoveEmployee';
 import Update from './pages/Update.js';
 import Calendar from './pages/Calendar.js';
 import CreditsPage from './pages/CreditsPage.js';
-
+import LogIn from './pages/LogIn.js'
+import ProtectedRoute from './ProtectedRoute.js';
+import Register from './pages/Register.js';
 class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route path='/' exact component={DashboardPage} />
-        <Route path='/dashboard' component={DashboardPage} />
-        <Route path='/profile' component={ProfilePage} />
-        <Route path='/tables' component={TablesPage} />
-        <Route path='/add' component={AddEmployee} />
-        <Route path='/remove' component={RemoveEmployee}/>
-        <Route path='/404' component={NotFoundPage} />
-        <Route path='/maps' component={MapsPage} />
-        <Route path='/details' component={DetailedView}/>
-        <Route path='/calendar' component={Calendar}/>
-        <Route path='/credits' component={CreditsPage}/>
-        <Route path='/update' component={Update}/>
+        <ProtectedRoute path='/' exact component={LogIn} />
+        <ProtectedRoute path='/dashboard' component={DashboardPage} />
+        <ProtectedRoute path='/profile' component={ProfilePage} />
+        <ProtectedRoute path='/tables' component={TablesPage} />
+        <ProtectedRoute path='/add' component={AddEmployee} />
+        <ProtectedRoute path='/remove' component={RemoveEmployee}/>
+        <ProtectedRoute path='/404' component={NotFoundPage} />
+        <ProtectedRoute path='/maps' component={MapsPage} />
+        <ProtectedRoute path='/details' component={DetailedView}/>
+        <ProtectedRoute path='/calendar' component={Calendar}/>
+        <ProtectedRoute path='/credits' component={CreditsPage}/>
+        <ProtectedRoute path='/update' component={Update}/>
+        <Route path='/login' component={LogIn} />
+        <Route path='/register' component={Register}/>
       </Switch>
     );
   }

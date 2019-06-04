@@ -3,10 +3,50 @@ import students from './students.js'
 import '../../styles/Credits.css';
 const CreditsPage = () => {
 
+
+function Click (){
+  var obj = {
+    UserName:"ViktorijaM",
+    Password:"0000"
+  }
+  console.log(obj);
+
+  fetch('http://localhost:5000/api/Authentication/Login', {
+    method:'post',
+
+    body:JSON.stringify(obj),
+    headers:{
+      'Content-Type':'application/json'},
+
+  })
+  .then(response => response.json())
+  .then(info => {
+    console.log(info.token);
+    localStorage.setItem('token',info.token)})
+}
+
+function Click2(){
+    var bearer = 'Bearer ' + localStorage.getItem('token');
+    console.log(localStorage.getItem('token'));
+  fetch('http://localhost:5000/api/UserProfile', {
+    method:'get',
+    withCredentials: true,
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization': bearer
+    },
+
+  })
+  .then(response => response.json())
+  .then(info => console.log(info));
+
+}
+
 return (
 
 	<div className="container-students" id="div1">
-  
+  <button onClick={Click}>Testing Button</button>
+  <button onClick={Click2}>Testing Login</button>
   <div className="card">
     <h1 className="title">Student 1</h1>
       <div className="input-container">

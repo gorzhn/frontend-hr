@@ -6,7 +6,7 @@ const TopNavigation = () => {
     return (
         <div className="sidebar-fixed position-fixed">
              <MDBListGroup className="list-group-flush">
-                <NavLink exact={true} to="/" activeClassName="activeClass">
+                <NavLink exact={true} to="/dashboard" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="chart-pie" className="mr-3"/>
                         Company Analytics                    </MDBListGroupItem>

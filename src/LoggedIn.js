@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Routes from '../src/components/Routes';
 import SideNavigation from './components/sideNavigation';
 import './index.css';
 
-class LoggedIn extends Component {
+class LoggedIn extends React.Component {
   
   render() {
     return (
