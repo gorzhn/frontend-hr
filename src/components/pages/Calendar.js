@@ -1,7 +1,7 @@
 import React from 'react';
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
-import events from './events.js';
+
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 const localizer = BigCalendar.momentLocalizer(moment)
 
@@ -13,12 +13,12 @@ class Calendar extends React.Component{
   	}
   }
   componentDidMount(){
-  fetch('https://api.myjson.com/bins/13yjkv')
+  fetch('http://localhost:5000/api/Events')
   .then(response => response.json())
   .then(info=> {
   	for(let i = 0 ; i < info.length; i++){
-  		info[i].start = new Date(info[i].start);
-  		info[i].end = new Date(info[i].end);
+  		info[i].startDate = new Date(info[i].startDate);
+  		info[i].endDate = new Date(info[i].endDate);
   	}
 
   	console.log(info);
@@ -32,8 +32,8 @@ class Calendar extends React.Component{
     <BigCalendar
       localizer={localizer}
       events={this.state.data}
-      startAccessor="start"
-      endAccessor="end"
+      startAccessor="startDate"
+      endAccessor="endDate"	
     />
   </div>
   )

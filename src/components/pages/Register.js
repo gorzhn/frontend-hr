@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBIcon } from 'mdbreact';
 import '../../styles/Login.css';
 import {Redirect} from 'react-router'
 
@@ -52,83 +52,96 @@ return(
 	this.state.redirect ? 
 	(<Redirect to={{pathname:'/login'}}/>)
 	 :(
-    <MDBContainer>
-      <MDBRow>
+   <MDBRow>
         <MDBCol md="6">
-          <form>
-            <p className="h5 text-center mb-4">Sign up</p>
-            <div className="grey-text">
-              <MDBInput
-                onChange={this.onChange} label="User Name"
-                icon="user"
-                group
-                name="username"
-                type="text"
-                validate
-                error="wrong"
-                success="right"
-              />
+          <MDBCard>
+            <MDBCardBody>
               
+          
+                <p className="h4 text-center py-4">Register</p>
+                <label
+                  htmlFor="defaultFormCardNameEx"
+                  className="grey-text font-weight-light"
+                >
+                  Your username
+                </label>
+                 <input
+                  type="text"
+                  id="defaultFormCardNameEx"
+                  className="form-control"
+                  name="username"
+                  onChange={this.onChange}
+                />
+                
+                <label
+                  htmlFor="defaultFormCardEmailEx"
+                  className="grey-text font-weight-light"
+                >
+                  Your embg
+                </label>
+                <input
+                  type="text"
+                  id="defaultFormCardEmailEx"
+                  className="form-control"
+                  name="embg"
+                  onChange={this.onChange}
+                />
+                  <label
+                  htmlFor="defaultFormCardEmailEx"
+                  className="grey-text font-weight-light"
+                >
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="defaultFormCardEmailEx"
+                  className="form-control"
+                  name="fullname"
+                  onChange={this.onChange}
+                />
+                  <label
+                  htmlFor="defaultFormCardEmailEx"
+                  className="grey-text font-weight-light"
+                >
+                  Your password
+                </label>
+                <input
+                  type="password"
+                  id="defaultFormCardEmailEx"
+                  className="form-control"
+                  name="password"
+                  onChange={this.onChange}
+                />
+                  <label
+                  htmlFor="defaultFormCardEmailEx"
+                  className="grey-text font-weight-light"
+                >
+                  Confirm password
+                </label>
+                <input
+                  type="password"
+                  id="defaultFormCardEmailEx"
+                  className="form-control"
 
+                  onChange={this.onChange}
+                />
 
-              <MDBInput
-                onChange={this.onChange} label="Embg"
-                icon="envelope"
-                group
-                name="embg"
-                type="email"
-                validate
-                error="wrong"
-                success="right"
-              />
+<div className="text-center py-4 mt-3">
+                  <MDBBtn className="btn btn-primary the-damn-button"  type="button" onClick={this.submit}>
+                    Register
+                    <MDBIcon fas icon="user-plus" className="ml-2" />
+                  </MDBBtn>
+                </div>
 
-              <MDBInput
-                onChange={this.onChange} label="Full Name"
-                icon="envelope"
-                group
-                name="fullname"
-                type="text"
-                validate
-                error="wrong"
-                success="right"
-              />
-
-
-
-              
-              <MDBInput
-                onChange={this.onChange} label="Your password"
-                icon="lock"
-                group
-                name="password"
-                type="password"
-                validate
-              />
-              <MDBInput
-                 label="Confirm password"
-                icon="exclamation-triangle"
-                group
-                type="password"
-                validate
-                error="wrong"
-                success="right"
-              />
-            </div>
-            <div className="text-center">
-              <MDBBtn onClick={this.submit} color="primary">Register</MDBBtn>
-            </div>
-          </form>
+            </MDBCardBody>
+          </MDBCard>
         </MDBCol>
       </MDBRow>
-    </MDBContainer>
-)
-)
-}
-}
 
+         
+)
+)
+}
+}
 
 export default Register;
-
-
-
-

@@ -8715,6 +8715,13 @@ react-toastify@^3.2.2:
     prop-types "^15.6.0"
     react-transition-group "^2.2.1"
 
+react-toasts@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-toasts/-/react-toasts-3.0.3.tgz#7ec7f5a61550852894130635df66a98d7a87e864"
+  integrity sha512-af85o0jS05A1SuurACOnBSRlLf2krPeXMPXL/67qnB1PjoMI8QjKXdGcxkELeNw1DMp8LVvxqdGnP5jiueTlEg==
+  dependencies:
+    watchable-stores "^2.0.2"
+
 react-transition-group@^2.2.1, react-transition-group@^2.5.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
@@ -10417,6 +10424,11 @@ watch@~0.18.0:
   dependencies:
     exec-sh "^0.2.0"
     minimist "^1.2.0"
+
+watchable-stores@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/watchable-stores/-/watchable-stores-2.0.2.tgz#38c03b73019e704d5f4741541b0dfbe9169c86bb"
+  integrity sha512-xKzypK+hG6gaZFcmiEvdazbD9Z8+hIlr+frC7Ne4N4LI0zvuPaT5uPrhn2RMxhiwaLVw70rctes+rPUTvwhPNg==
 
 watchpack@^1.5.0:
   version "1.6.0"

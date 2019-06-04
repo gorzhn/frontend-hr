@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBIcon } from 'mdbreact';
 import '../../styles/Login.css';
 import {Redirect} from 'react-router';
 
@@ -19,6 +19,7 @@ this.submit = this.submit.bind(this);
 }
 onChange(e){
 this.setState({[e.target.name]:e.target.value})
+console.log(this.state.username)
 }
 submit(e){
 	 var obj = {
@@ -29,7 +30,6 @@ submit(e){
     
   fetch('http://localhost:5000/api/Authentication/Login', {
     method:'post',
-
     body:JSON.stringify(obj),
     headers:{
       'Content-Type':'application/json'},
@@ -55,40 +55,52 @@ return(
 
 	this.state.redirect ? (<Redirect to={{pathname:"/dashboard"}}/>)
 	:(
-   <div className="alternative-container">
-		
+    <React.Fragment>
       <MDBRow>
         <MDBCol md="6">
-          <form onSubmit={this.submit}>
-            <p className="h4 text-center mb-4">Login</p>
-            <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
-              Your username
-            </label>
-            <input 
-            onChange={this.onChange}
-              type="text"
-              id="defaultFormLoginEmailEx"
-              className="form-control"
-              name="username"
-            />
-            <br />
-            <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
-              Your password
-            </label>
-            <input
-            onChange={this.onChange}
-              type="password"
-              id="defaultFormLoginPasswordEx"
-              className="form-control"
-              name="password"
-            />
-            <div className="text-center mt-4">
-              <MDBBtn onClick={this.submit} color="indigo" type="button" >Login</MDBBtn>
-            </div>
-          </form>
+          <MDBCard>
+            <MDBCardBody>
+              
+                <p className="h4 text-center py-4">Login</p>
+                <label
+                  htmlFor="defaultFormCardNameEx"
+                  className="grey-text font-weight-light"
+                >
+                  Your username
+                </label>
+                <input
+                  type="text"
+                  id="defaultFormCardNameEx"
+                  className="form-control"
+                  name="username"
+                  onChange={this.onChange}
+                />
+                <br />
+                <label
+                  htmlFor="defaultFormCardEmailEx"
+                  className="grey-text font-weight-light"
+                >
+                  Your password
+                </label>
+                <input
+                  type="password"
+                  id="defaultFormCardEmailEx"
+                  className="form-control"
+                  name="password"
+                  onChange={this.onChange}
+                />
+                <div className="text-center py-4 mt-3">
+                  <MDBBtn className="btn btn-primary the-damn-button"  type="button" onClick={this.submit}>
+                    Submit
+                    <MDBIcon fas icon="user-check" className="ml-2" />
+                  </MDBBtn>
+                </div>
+              
+            </MDBCardBody>
+          </MDBCard>
         </MDBCol>
       </MDBRow>
-    </div>
+    </React.Fragment>
 )
 )
 }

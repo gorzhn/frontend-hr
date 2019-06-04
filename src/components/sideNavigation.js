@@ -1,50 +1,41 @@
 import React from 'react';
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from 'mdbreact';
 import { NavLink } from 'react-router-dom';
+import '../styles/switch.css';
+import {ToastsContainer, ToastsStore} from 'react-toasts';
+import AdminSideNav from './pages/AdminSideNav.jsx';
+import UserSideNav from './pages/UserSideNav.jsx';
 
-const TopNavigation = () => {
+class TopNavigation extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            admin:true
+        };
+    }
+    render(){
+        var str = this.state.admin  ? "Switched to User" :"Switched to Admin";
     return (
+<React.Fragment>
         <div className="sidebar-fixed position-fixed">
-             <MDBListGroup className="list-group-flush">
-                <NavLink exact={true} to="/dashboard" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="chart-pie" className="mr-3"/>
-                        Company Analytics                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/tables" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="table" className="mr-3"/>
-                        Company Employees
-                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink  to="/add" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="user-plus" className="mr-3"/>
-                        Insert Employee                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/calendar" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="user" className="mr-3"/>
-                        Information Calendar
-                    </MDBListGroupItem>
-                </NavLink>
-                <NavLink to="/update" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="user" className="mr-3"/>
-                        Update Information
-                    </MDBListGroupItem>
-                </NavLink>
-                
-                
-                <NavLink to="/credits" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        <MDBIcon icon="user" className="mr-3"/>
-                        Credits
-                    </MDBListGroupItem>
-                </NavLink>
-            </MDBListGroup>
+        <div className="toggle-container">
+            <label className="switch"  style={{background:"#007bff"}}><input type="checkbox" onChange={()=> {
+            this.setState({admin:!this.state.admin});
+            ToastsStore.success(str)}
+
+            } />    <div></div>
+
+  </label>    
+        <ToastsContainer position={"top_right"} store={ToastsStore} />
+  </div>
+  {this.state.admin ? ( 
+    <AdminSideNav/>
+            ) : <UserSideNav/>} 
+
         </div>
+        </React.Fragment>
     );
+}
 }
 
 export default TopNavigation;

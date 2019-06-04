@@ -5,3 +5,36 @@
 
 
 	}
+
+.the-damn-button {
+	background:#007bff !important;
+}
+
+.row {
+	margin:auto;
+	width:100%;
+
+}
+.card-body {
+	padding:1.25em;
+
+}
+.card{
+	margin-top:3em;
+}
+.col-md-6 {
+flex:none !important;
+max-width:100% !important;
+margin:auto;
+
+}
+
+
+@media  (min-width:900px){
+.col-md-6 
+{
+flex:none !important;
+max-width:50% !important;
+
+}
+}

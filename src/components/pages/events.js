@@ -2,7 +2,6 @@ const now = new Date()
 
 export default [
   {
-    id: 0,
     title: 'All Day Event very long title',
     allDay: true,
     start: new Date(2019, 5, 23),
@@ -100,19 +99,19 @@ export default [
     end: new Date(2019, 3, 22, 2, 0, 0),
   },
   {
-    id: 14,
+    
     title: 'Today',
     start: new Date(new Date().setHours(new Date().getHours() - 3)),
     end: new Date(new Date().setHours(new Date().getHours() + 3)),
   },
   {
-    id: 15,
+    
     title: 'Point in Time Event',
     start: now,
     end: now,
   },
     {
-    id: 16,
+   
     title: 'Fight with toska',
     start: new Date(2019,4,27),
     end: new Date(2019,4,28),

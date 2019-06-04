@@ -171,7 +171,7 @@ export default class Search extends React.Component {
                     value={this.state.value}
                     onChange={this.onChange}
                     onSelect={this.onSelect}
-                     inputProps={{ className:this.props.classes  }}
+                     inputProps={{ className:this.props.classes, placeholder:"Search employees"  }}
                 />
                    
             </form>)  

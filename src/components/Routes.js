@@ -14,6 +14,7 @@ import CreditsPage from './pages/CreditsPage.js';
 import LogIn from './pages/LogIn.js'
 import ProtectedRoute from './ProtectedRoute.js';
 import Register from './pages/Register.js';
+import AddEvent from './pages/AddEvent.jsx';
 class Routes extends React.Component {
   render() {
     return (
@@ -27,9 +28,13 @@ class Routes extends React.Component {
         <ProtectedRoute path='/404' component={NotFoundPage} />
         <ProtectedRoute path='/maps' component={MapsPage} />
         <ProtectedRoute path='/details' component={DetailedView}/>
-        <ProtectedRoute path='/calendar' component={Calendar}/>
+        <Route path='/calendar' component={Calendar}/>
         <ProtectedRoute path='/credits' component={CreditsPage}/>
         <ProtectedRoute path='/update' component={Update}/>
+        <ProtectedRoute path='/addevent' component={AddEvent}/>
+        // employee request leave
+        <Route path='/request' component={Register}/>
+        
         <Route path='/login' component={LogIn} />
         <Route path='/register' component={Register}/>
       </Switch>
