@@ -1,5 +1,5 @@
 import React from 'react'
-import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
+import { MDBRow, MDBIcon, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 import { NavLink } from 'react-router-dom';
 import '../../styles/TablesPage.css';
 import {  MDBBtn, MDBModal, MDBModalBody, MDBModalHeader} from 'mdbreact';
@@ -22,7 +22,7 @@ class TablesPage extends React.Component {
             this.handleTermination = this.handleTermination.bind(this);
             this.proceedTermination = this.proceedTermination.bind(this);
             this.handleModal = this.handleModal.bind(this);
-            this.onSort = this.onSort.bind(this);	
+            this.onSort = this.onSort.bind(this); 
             
         }
 
@@ -63,28 +63,48 @@ let str = this.state.embg;
     const prev = this.state.asc;
     let name = event.target.getAttribute('name'); 
 
-   	if(this.state.asc === true){
+    if(this.state.asc === true){
 
-   	 data.sort((a,b) => a[name].toString().localeCompare(b[name].toString()))
-   	 this.setState({data})
+     data.sort((a,b) => a[name].toString().localeCompare(b[name].toString()))
+     this.setState({data})
 }
-	else {
-	    data.sort((a,b) => b[name].toString().localeCompare(a[name].toString()))
-    	this.setState({data})
+  else {
+      data.sort((a,b) => b[name].toString().localeCompare(a[name].toString()))
+      this.setState({data})
     }
     this.setState({asc:!prev});
   }
 
+  //loso resenie so sortiranjeto
+  //O(N^2) kompleksnost
+
         componentDidMount(){
-            fetch('http://localhost:5000/api/employees/all')
-            .then((response) => {
+            Promise.all([
+            fetch('http://localhost:5000/api/employees/all'),
+            fetch('https://api.myjson.com/bins/10tglb'),
+            fetch('https://api.myjson.com/bins/14oelj')
+        ]).then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
+          .then(([data1, data2, data3]) => {
+              for(let i = 0 ; i < data1.length; i++){
+                for(let j = 0 ; j < data2.length; j++){
+                    if(data1[i].jobId === data2[j].job_id){
+                      data1[i].jobId = data2[j].job_name;
+                    }
+                }
+              }
+              for(let i = 0 ; i < data1.length; i++){
+                for(let j = 0 ; j < data3.length; j++){
+                    if(data1[i].departmentId === data3[j].departmentId){
+                      data1[i].departmentId = data3[j].departmentName
+                    }
+                }
+              }
+              console.log(data1)
+              this.setState({"data":data1})
+              }
 
-              return response.json();
-             }
-            )
-            .then((info) => this.setState({data:info}));
+            )}
 
-            }
 
 
 
@@ -122,7 +142,7 @@ let str = this.state.embg;
                 </NavLink>
                 </td>
                   <td> 
-                <button  id={num.embg} name={num.embg} color="primary" size="sm" onClick={this.handleTermination} className="terminate-button">X</button>
+                <button  id={num.embg} name={num.embg} color="primary" size="sm" onClick={this.handleTermination} className="terminate-button"><MDBIcon fas icon="user-times" className="ml-2" /></button>
                 </td>
 
                  
@@ -134,34 +154,26 @@ let str = this.state.embg;
        <Autocomplete classes={"search-input form-control form-control-sm ml-3 w-75"}
 />
 </div>
-      <div>
-      <MDBRow>
-      <MDBCol md="12">
-        <MDBCard className="mt-5">
-            <h3 className="employees-title text-left"><strong>Company Employees</strong></h3>
-           <MDBTable className="employee-table">
-              <MDBTableHead>
-                <tr>
-                 <th  onClick={this.onSort} name="firstName">First Name <i className="fas fa-caret-down" aria-hidden="true"></i></th>
-                  <th onClick={this.onSort} name="lastName">Last Name <i className="fas fa-caret-down" aria-hidden="true"></i></th>
-                  <th onClick={this.onSort} name="jobId">Position <i className="fas fa-caret-down" aria-hidden="true"></i></th>
-                  <th onClick={this.onSort} name="dateHired">Start Date <i className="fas fa-caret-down" aria-hidden="true"></i></th>
-                  <th onClick={this.onSort} name="salary">Salary <i className="fas fa-caret-down" aria-hidden="true"></i></th>
-                  <th onClick={this.onSort} name="embg">Embg <i className="fas fa-caret-down" aria-hidden="true"></i></th>
-                  <th onClick={this.onSort} name="departmentId">Department Id <i className="fas fa-caret-down" aria-hidden="true"></i></th>
-                  <th name="">Detailed View</th>
-                  <th name="">Delete</th>
-                  </tr>
-              </MDBTableHead>
-              <MDBTableBody>
-               {tabledata}
-              </MDBTableBody>
-            </MDBTable>
-        </MDBCard>
-      </MDBCol>
-
-
-        <MDBCol lg="6" className="mb-4">
+      <MDBTable>
+      <MDBTableHead color="primary-color" textWhite>
+        <tr>
+          
+          <th>First Name</th>
+          <th>Last Name </th>
+          <th>Position </th>
+          <th>Date Hired </th>
+          <th>Salary</th>
+          <th>Embg </th>
+          <th>Department </th>
+          <th>Detials </th>
+          <th>Last Name </th>
+        </tr>
+      </MDBTableHead>
+      <MDBTableBody>
+        {tabledata}
+      </MDBTableBody>
+    </MDBTable>
+    <MDBCol lg="6" className="mb-4">
 
                 <MDBCardBody>
                  
@@ -187,9 +199,7 @@ let str = this.state.embg;
 
               </MDBCol>
 
-    </MDBRow>
-    </div>
-    </React.Fragment>
+          </React.Fragment>
   )
 }
 }

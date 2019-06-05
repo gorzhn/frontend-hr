@@ -1,9 +1,3 @@
-let data = {};
-
-fetch("http://localhost:5000/api/employees/all")
-.then(response => response.json())
-.then(info => data = info);
-console.log(data);
 
 export default  {
 
