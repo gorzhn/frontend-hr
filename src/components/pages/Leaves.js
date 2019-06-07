@@ -6,6 +6,8 @@ import {  MDBBtn, MDBModal, MDBModalBody, MDBModalHeader} from 'mdbreact';
 import Autocomplete from './sections/Search';
 import { MDBDataTable } from 'mdbreact';
 import "../../styles/Leaves.css";
+import { CSVLink, CSVDownload } from "react-csv";
+
 
 class EventsTable extends React.Component {
    constructor(props){
@@ -124,6 +126,8 @@ class EventsTable extends React.Component {
 />
          
 
+<CSVLink filename="leaves-export.csv" style={{"float":"right","padding":"1em"}}data={this.state.data.rows}>Export as csv
+<MDBIcon fas icon="file-csv" className="ml-2" /></CSVLink>
 
 </div>
     <MDBDataTable className="leaves"

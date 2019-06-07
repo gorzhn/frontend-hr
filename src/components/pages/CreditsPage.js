@@ -1,36 +1,23 @@
 import React from 'react';
 import students from './students.js'
 import '../../styles/Credits.css';
+  import { CSVLink, CSVDownload } from "react-csv";
+
 const CreditsPage = () => {
-
-function onClick(e){
-console.log(e.target)
-}
-
-
-
-function Click2(){
-    var bearer = 'Bearer ' + localStorage.getItem('token');
-    console.log(localStorage.getItem('token'));
-  fetch('http://localhost:5000/api/UserProfile', {
-    method:'get',
-    withCredentials: true,
-    headers:{
-      'Content-Type':'application/json',
-      'Authorization': bearer
-    },
-
-  })
-  .then(response => response.json())
-  .then(info => console.log(info));
-
-}
-
+ 
+const csvData = [
+  ["firstname", "lastname", "email"],
+  ["Ahmed", "Tomi", "ah@smthing.co.com"],
+  ["Raed", "Labes", "rl@smthing.co.com"],
+  ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+];
 return (
-<div onClick={onClick} name="administrator" className="card-wrapper">
+  <div>
+<CSVLink filename="employees-export" data={csvData}>Download me</CSVLink>
 
-</div>
-	)
+<CSVDownload data={csvData} target="_blank" />
+	</div>
+  )
 
 }
 export default CreditsPage;

@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import '../../styles/TablesPage.css';
 import {  MDBBtn, MDBModal, MDBModalBody, MDBModalHeader} from 'mdbreact';
 import Autocomplete from './sections/Search';
+  import { CSVLink, CSVDownload } from "react-csv";
+
 
 class TablesPage extends React.Component {
    constructor(){
@@ -145,7 +147,6 @@ let str = this.state.embg;
                   <td> 
                 <button  id={num.embg} name={num.embg} color="primary" size="sm" onClick={this.handleTermination} className="terminate-button"><MDBIcon fas icon="user-times" className="ml-2" /></button>
                 </td>
-
                  
                   
               </tr> )
@@ -155,6 +156,9 @@ let str = this.state.embg;
        <Autocomplete classes={"search-input form-control form-control-sm ml-3 w-75"}
 />
 </div>
+<CSVLink filename="employees-export.csv" style={{"float":"right","padding":"1em"}}data={this.state.data}>Export as csv
+<MDBIcon fas icon="file-csv" className="ml-2" /></CSVLink>
+
       <MDBTable>
       <MDBTableHead color="primary-color" textWhite>
         <tr>
