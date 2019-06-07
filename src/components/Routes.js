@@ -36,6 +36,7 @@ class Routes extends React.Component {
         <ProtectedRoute path='/update' component={Update}/>
         <ProtectedRoute path='/addevent' component={AddEvent}/>
         <ProtectedRoute path='/leaves' component={Leaves}/>
+        
 
 
         

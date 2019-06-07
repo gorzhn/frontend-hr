@@ -1,5 +1,5 @@
 import React from 'react'
-import { MDBRow, MDBIcon, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
+import { MDBRow, MDBContainer,MDBModalFooter, MDBIcon, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 import { NavLink } from 'react-router-dom';
 import '../../styles/TablesPage.css';
 import {  MDBBtn, MDBModal, MDBModalBody, MDBModalHeader} from 'mdbreact';
@@ -7,12 +7,32 @@ import Autocomplete from './sections/Search';
 import { MDBDataTable } from 'mdbreact';
 import "../../styles/Leaves.css";
 import { CSVLink, CSVDownload } from "react-csv";
+import ModalLeaves from './sections/ModalLeaves.js';
+
 
 
 class EventsTable extends React.Component {
+toggle = function(e) {
+  console.log(e)
+  this.setState({
+    modal: !this.state.modal
+  });
+}
    constructor(props){
     super(props);
+    this.toggle = this.toggle.bind(this);
+
+
     this.state = {
+          modal:false,
+          leaveId: "",
+          embg:"",
+          title:"",
+          endDate:"",
+          startDate: "",
+          status:"",
+
+
       data:{
         columns: [
       {
@@ -44,8 +64,63 @@ class EventsTable extends React.Component {
     rows:[]
     }
    }
+   this.handleApprove = this.handleApprove.bind(this); 
+   this.handleRefuse = this.handleRefuse.bind(this); 
+
 
   };
+
+handleApprove(){
+var obj = {
+leaveId: this.state.leaveId,
+embg:this.state.embg,
+title:this.state.title,
+endDate:this.state.endDate,
+startDate: this.state.startDate,
+status:"2"
+}
+fetch('http://localhost:5000/api/Leaves/update/' + this.state.leaveId, {
+        method: 'post',
+        body: JSON.stringify(obj),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+.then(response => console.log(response.json()))
+
+   this.setState({modal:!this.state.modal})
+    
+
+
+
+
+}
+
+handleRefuse(){
+var obj = {
+leaveId: this.state.leaveId,
+embg:this.state.embg,
+title:this.state.title,
+endDate:this.state.endDate,
+startDate: this.state.startDate,
+status:"3"
+}
+fetch('http://localhost:5000/api/Leaves/update/' + this.state.leaveId, {
+        method: 'post',
+        body: JSON.stringify(obj),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+.then(response => console.log(response.json()))
+
+   this.setState({modal:!this.state.modal})
+    
+
+
+
+
+}
  componentDidMount(){
   fetch('http://localhost:5000/api/leaves/all')
   .then(response => response.json())
@@ -57,7 +132,21 @@ class EventsTable extends React.Component {
     for(let i = 0 ; i < info.length; i++){
       info[i].startDate = (new Date(info[i].startDate).toLocaleString())
       info[i].endDate = (new Date(info[i].endDate).toLocaleString())
-      info[i].clickEvent = ()=>console.log(info[i].embg);
+      info[i].clickEvent = () => {
+        console.log(info[i].leaveId)
+  this.setState({
+    modal: !this.state.modal,
+    leaveId:info[i].leaveId,
+          
+          leaveId: info[i].leaveId,
+          embg:info[i].embg,
+          title:info[i].title,
+          endDate:info[i].endDate,
+          startDate: info[i].startDate,
+          status:info[i].status
+
+  });
+}
         if(info[i].status === 1) {
           info[i].status = "Pending";
         }
@@ -117,6 +206,9 @@ class EventsTable extends React.Component {
 })
    })
  }
+
+
+
   render(){
 
   return (
@@ -136,6 +228,23 @@ class EventsTable extends React.Component {
       hover
       data={this.state.data}
     />
+
+
+
+
+    
+      <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+         <MDBModalBody>
+        Select to approve or refuse this request          
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="primary" onClick={this.toggle}>Close</MDBBtn>
+          <MDBBtn onClick={this.handleApprove} name="approve" color="success">Approve</MDBBtn>
+          <MDBBtn onClick={this.handleRefuse} name="refuse" color="danger">Refuse</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
+    
+
 </React.Fragment>
   );
 }

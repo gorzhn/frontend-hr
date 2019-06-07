@@ -2,6 +2,7 @@ import React from 'react';
 import students from './students.js'
 import '../../styles/Credits.css';
   import { CSVLink, CSVDownload } from "react-csv";
+  import ModalLeaves from './sections/ModalLeaves.js'
 
 const CreditsPage = () => {
  
@@ -13,9 +14,7 @@ const csvData = [
 ];
 return (
   <div>
-<CSVLink filename="employees-export" data={csvData}>Download me</CSVLink>
-
-<CSVDownload data={csvData} target="_blank" />
+<ModalLeaves/>
 	</div>
   )
 

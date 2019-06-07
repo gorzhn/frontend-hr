@@ -91,6 +91,7 @@ class EventsTable extends React.Component {
 })
    })
  }
+
   render(){
 
   return (
@@ -103,7 +104,7 @@ class EventsTable extends React.Component {
 
 </div>
 
-<CSVLink filename="events-export.csv" style={{"float":"right","padding":"1em"}}data={this.state.data.rows}>Export as csv
+<CSVLink filename="events-export.csv" style={{"float":"right","padding":"1em"}} data={this.state.data.rows}>Export as csv
 <MDBIcon fas icon="file-csv" className="ml-2" /></CSVLink>
     <MDBDataTable
       striped
