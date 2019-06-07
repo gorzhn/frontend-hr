@@ -10,18 +10,23 @@ constructor(props){
 			}
 componentDidMount(){
     
- fetch('https://api.myjson.com/bins/10tglb')
+ fetch('http://localhost:5000/api/Jobs/all')
      .then((res2) => res2.json())
      .then((data2) => 
      this.setState({options:data2}));
  }
 
 render(){
-	let options = this.state.options;
-   let optionItems = options.map((opt) =>
-                <option name={opt.job_id} key={opt.job_id}>{opt.job_name}</option>
-            );
-			return(
+
+ let options = this.state.options;
+ let optionItems = options.map((opt) => {
+   		if(this.props.default === opt.jobId)
+               return ( <option name={opt.jobId} selected key={opt.jobId}>{opt.jobName} </option>)
+        else
+     return (<option name={opt.jobId} key={opt.jobId}>{opt.jobName}</option>)
+        }
+        )
+        	return(
 				this.state.options.length > 0 ?  (
 		<select className="browser-default custom-select " onChange={this.props.onselect}>
 			{optionItems}

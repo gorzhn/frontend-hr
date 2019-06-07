@@ -13,7 +13,7 @@ class Calendar extends React.Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:5000/api/Events")
+    fetch("http://localhost:5000/api/Events/all")
       .then(response => response.json())
       .then(info => {
         for (let i = 0; i < info.length; i++) {

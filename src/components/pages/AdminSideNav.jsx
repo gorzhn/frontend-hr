@@ -36,12 +36,27 @@ class AdminSideNav extends React.Component {
               Events Calendar
             </MDBListGroupItem>
           </NavLink>
+          <NavLink to="/events" activeClassName="activeClass">
+                    <MDBListGroupItem>
+                        <MDBIcon icon="calendar-day" className="mr-3"/>
+                        Events Information
+                    </MDBListGroupItem>
+                </NavLink>
           <NavLink to="/addevent" activeClassName="activeClass">
             <MDBListGroupItem>
               <MDBIcon icon="calendar-plus" className="mr-3" />
               Add Event
             </MDBListGroupItem>
           </NavLink>
+          
+
+          <NavLink to="/leaves" activeClassName="activeClass">
+            <MDBListGroupItem>
+              <MDBIcon icon="calendar-plus" className="mr-3" />
+              Leaves
+            </MDBListGroupItem>
+          </NavLink>
+
 
           <NavLink to="/credits" activeClassName="activeClass">
             <MDBListGroupItem>

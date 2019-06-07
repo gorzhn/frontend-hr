@@ -31,8 +31,11 @@ this.state = {
 this.handleChange= this.handleChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
 this.showModal = this.showModal.bind(this);
-this.onSelect = this.onSelect.bind(this);
+ this.onSelect = this.onSelect.bind(this); 
+    this.onSelectJob = this.onSelectJob.bind(this); 
+
 };
+
 
 onSelect(e){
   let index = e.target.selectedIndex;
@@ -41,8 +44,19 @@ onSelect(e){
   console.log(option); 
   this.setState({
     departmentId:option
-  });
-};
+  })
+}
+onSelectJob(e){
+  let index = e.target.selectedIndex;
+    console.log(index);
+  let el = e.target.childNodes[index];
+  let option =  el.getAttribute('name');
+  console.log(option); 
+  this.setState({
+    jobId:option
+  })
+}
+
 
 handleChange(e){
 
@@ -208,12 +222,12 @@ return(
       
       <div className="md-form form-sm">
       <div>Position</div>
-  <input type="text" id="inputSMEx" name="jobId" defaultValue={this.state.jobId} onChange={this.handleChange} className="form-control form-control-sm"/>
+  <SelectJob name="" default={this.state.jobId} onselect={this.onSelectJob}/>
   <label htmlFor="inputSMEx"> </label>
 </div>
 <div className="md-form form-sm">
 <div>Department</div>
-  <input type="text" id="inputSMEx" name="departmentId" defaultValue={this.state.departmentId} onChange={this.handleChange} className="form-control form-control-sm"/>
+  <Select default={this.state.departmentId} onselect={this.onSelect}/>
   <label htmlFor="inputSMEx"> </label>
 </div>
 <div className="md-form form-sm">

@@ -27,7 +27,7 @@ class AddEvent extends React.Component {
       title: this.state.title
     };
 
-    fetch("http://localhost:5000/api/Events", {
+    fetch("http://localhost:5000/api/Events/create", {
       method: "post",
       body: JSON.stringify(event),
       headers: {

@@ -59,10 +59,12 @@ let str = this.state.embg;
   onSort(event, sortKey){
 
 
-    const data = this.state.data;
+    const data = this.state.data
+    console.log(data);
+    
     const prev = this.state.asc;
     let name = event.target.getAttribute('name'); 
-
+    console.log(name);
     if(this.state.asc === true){
 
      data.sort((a,b) => a[name].toString().localeCompare(b[name].toString()))
@@ -81,14 +83,14 @@ let str = this.state.embg;
         componentDidMount(){
             Promise.all([
             fetch('http://localhost:5000/api/employees/all'),
-            fetch('https://api.myjson.com/bins/10tglb'),
-            fetch('https://api.myjson.com/bins/14oelj')
+            fetch('http://localhost:5000/api/jobs/all'),
+            fetch('http://localhost:5000/api/departments/all')
         ]).then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
           .then(([data1, data2, data3]) => {
               for(let i = 0 ; i < data1.length; i++){
                 for(let j = 0 ; j < data2.length; j++){
-                    if(data1[i].jobId === data2[j].job_id){
-                      data1[i].jobId = data2[j].job_name;
+                    if(data1[i].jobId === data2[j].jobId){
+                      data1[i].jobId = data2[j].jobName;
                     }
                 }
               }
@@ -99,7 +101,6 @@ let str = this.state.embg;
                     }
                 }
               }
-              console.log(data1)
               this.setState({"data":data1})
               }
 
@@ -158,15 +159,15 @@ let str = this.state.embg;
       <MDBTableHead color="primary-color" textWhite>
         <tr>
           
-          <th>First Name</th>
-          <th>Last Name </th>
-          <th>Position </th>
-          <th>Date Hired </th>
-          <th>Salary</th>
-          <th>Embg </th>
-          <th>Department </th>
-          <th>Detials </th>
-          <th>Last Name </th>
+                  <th  onClick={this.onSort} name="firstName">First Name</th>
+                  <th onClick={this.onSort} name="lastName">Last Name</th>
+                  <th onClick={this.onSort} name="jobId">Position</th>
+                  <th onClick={this.onSort} name="dateHired">Start Date</th>
+                  <th onClick={this.onSort} name="salary">Salary</th>
+                  <th onClick={this.onSort} name="embg">Embg</th>
+                  <th onClick={this.onSort} name="departmentId">Department</th>
+                  <th  name="">Details</th>
+                  <th  name="">Delete</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
@@ -204,3 +205,9 @@ let str = this.state.embg;
 }
 }
 export default TablesPage;
+
+
+
+
+
+

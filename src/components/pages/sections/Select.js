@@ -11,16 +11,21 @@ class Select extends React.Component {
 
   componentDidMount(){
     
- fetch('https://api.myjson.com/bins/14oelj')
+ fetch('http://localhost:5000/api/Departments/all')
      .then((res2) => res2.json())
      .then((data2) => 
      this.setState({options:data2}))
  }
 render(){
 
-	let options = this.state.options;
-   let optionItems = options.map((opt) =>
-                <option name={opt.departmentId} key={opt.departmentId}>{opt.departmentName}</option>
+ let options = this.state.options;
+ let optionItems = options.map((opt) => {
+   		if(this.props.default === opt.departmentId)
+               return ( <option name={opt.departmentId} selected key={opt.departmentId}>{opt.departmentName} </option>)
+        else
+     return (<option name={opt.departmentId} key={opt.departmentId}>{opt.departmentName}</option>)
+        }
+
             );
 
 

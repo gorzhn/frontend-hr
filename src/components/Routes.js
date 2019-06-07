@@ -15,6 +15,9 @@ import LogIn from './pages/LogIn.js'
 import ProtectedRoute from './ProtectedRoute.js';
 import Register from './pages/Register.js';
 import AddEvent from './pages/AddEvent.jsx';
+import EventsTable from './pages/EventsTable.js';
+import RequestLeave from './pages/RequestLeave.jsx';
+import Leaves from './pages/Leaves';
 class Routes extends React.Component {
   render() {
     return (
@@ -32,9 +35,15 @@ class Routes extends React.Component {
         <ProtectedRoute path='/credits' component={CreditsPage}/>
         <ProtectedRoute path='/update' component={Update}/>
         <ProtectedRoute path='/addevent' component={AddEvent}/>
-        // employee request leave
-        <Route path='/request' component={Register}/>
+        <ProtectedRoute path='/leaves' component={Leaves}/>
+
+
         
+        // employee request leave
+        <Route path='/requestleave' component={RequestLeave}/>
+        //end 
+
+        <Route path='/events' component={EventsTable}/>
         <Route path='/login' component={LogIn} />
         <Route path='/register' component={Register}/>
       </Switch>

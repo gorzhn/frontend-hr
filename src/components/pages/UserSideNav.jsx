@@ -14,12 +14,18 @@ render(){
 
 <React.Fragment>
  <MDBListGroup className="list-group-flush">
-                <NavLink exact={true} to="/dashboard" activeClassName="activeClass">
+                <NavLink exact={true} to="/requestleave" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="calendar" className="mr-3"/>
                         Request leave                    </MDBListGroupItem>
                 </NavLink>
                 <NavLink to="/calendar" activeClassName="activeClass">
+                    <MDBListGroupItem>
+                        <MDBIcon icon="calendar-day" className="mr-3"/>
+                        Events Calendar
+                    </MDBListGroupItem>
+                </NavLink>
+                <NavLink to="/events" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="calendar-day" className="mr-3"/>
                         Events Information
